@@ -41,12 +41,23 @@ public class PatientController {
 	public List<Patient> findByCity(@PathVariable(name="city", required = true) String city) {
 		return patientServices.findByCity(city);
 	}
-
+	@GetMapping("/patientByRoomtypes/{room}")
+	public List<Patient> findByRoomtypes(@PathVariable(name="room", required = true) String room) {
+		return patientServices.findByRoomtypes(room);
+	}
 	@PutMapping("/patient")
 	public String updateEmp(@RequestBody Patient e) {
 		patientServices.updatePatient(e);
 		return "Updated ";
 
 	}
+//	@GetMapping("/patientCity")
+//	public String findByCityName (@PathVariable String city) {
+//		 patientServices.findByCityName(city);
+//		 return "Data get";
+		
+		
+//	}
 
+	
 }

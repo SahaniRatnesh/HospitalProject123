@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import com.vtech.SpringBootDataJPA.Model.Patient;
 import com.vtech.SpringBootDataJPA.Repository.PatientRepository;
 
@@ -20,9 +23,9 @@ public class PatientServices {
 		patientRepository.save(p);
 	}
 	
-	public List<Patient> findByCity(String city){
-		return patientRepository.findByCity(city);
-	}
+//	public List<Patient> findByCity(String city){
+//		return patientRepository.findByCity(city);
+//	}
 	public void updatePatient(Patient p) {
 		Patient temp = patientRepository.findById(p.getId()).get();
 		temp.setName(p.getName());
@@ -33,5 +36,12 @@ public class PatientServices {
 	public Optional<Patient> findById(Long id){
 		return patientRepository.findById(id);
 	}
+	public List<Patient> findByCity(String city){
+		return patientRepository.findByCity(city);
+	}
+	public List<Patient> findByRoomtypes(String room) {
+		return patientRepository.findByRoomtypes(room);
+	}
+	
 
 }
